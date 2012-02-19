@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+Almost there! Please Fill the following form to Confirm your presence in DevFestX. [Having problems? Send all the info to delhi.gtug@devfestx.com]
+<br><br>
+<script type="text/javascript">
+function checksize(){
+    
+
+    var size = document.getElementById('myFile').files[0].size;
+    // check file size
+    if (size>1048576) {
+        alert("Attached image size exceeds 1MB");
+        document.getElementById('myFile').clear();
+    }
+}
+
+
+</script>
+    <form action="/Register?invite={{ invite }}" method="post" enctype="multipart/form-data">
+        <div class="label">Email ID*</div><div class="inputs"><input type="text" name="emailid" required="Required Field"></div><br />
+        <div class="label">Name</div><div class="inputs"><input type="text" name="name" required="Required Field"></div><br />
+        <div class="label">Twitter handle</div><div class="inputs"><input type="text" name="twitter" required="Required Field"></div><br />
+        <div class="label">Company/College</div><div class="inputs"><input type="text" name="company" required="Required Field"></div><br />
+        <div class="label">Contact Number*</div><div class="inputs"><input type="text" name="contact_no" required="Required Field"></div><br />
+        <div class="label">Focus Technology</div><div class="inputs"><input type="text" name="tech" required="Required Field"></div><br />
+        <div class="label">About You/Your Company</div><div class="inputs"><textarea name="about" rows="3" cols="60" required="Required Field"></textarea></div><br />
+        <div class="label">Website/Blog</div><div class="inputs"><input type="text" name="website"></div>  <br />
+        <div class="label">Personal Website/Blog</div><div class="inputs"><input type="text" name="website2"></div>  <br />
+        <div class="label">Picture/Logo (max 1 mb)</div><div class="inputs"><input id="myFile" type="file" name="img" required="Avatar Needed" onChange="checksize()"/></div>  <br />
+        <div class="label">All information 'except' those marked with * will be displayed on your public profile.</div>
+        
+      <div></div>
+      <div><input type="submit" value="Submit"></div>
+      <br />
+      <br />
+      <br />
+    </form>
+
+{% endblock %}

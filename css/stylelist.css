@@ -1,0 +1,45 @@
+* { 
+    outline: none;
+}
+img{
+    float:left;
+}
+body {
+    width:1000px;
+    margin: 20px auto;
+    padding: 0;
+    color: #343434;
+    font-size: 100%;
+    background-color: #fff;
+   // background: url('/img/logofull.png');
+}
+.contact li{
+    position: relative;
+    list-style: none;
+    padding: 0;
+    float: left;
+    white-space:pre-line;
+}
+.contact {
+    width:250px;
+    height:500px;
+    float:left;
+    padding:10px;
+    margin:10px;
+    background-color:#EEE;;
+}
+.contactday2 li{
+    position: relative;
+    list-style: none;
+    padding: 0;
+    float: left;
+    white-space:pre-line;
+}
+.contactday2 {
+    width:250px;
+    height:500px;
+    float:left;
+    padding:10px;
+    margin:10px;
+    background-color:#FAA;;
+}

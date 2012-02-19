@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<form name="form_invites" action="/addkey" method="post">
+    Name: <input type="text" name="naam">
+    <br>
+Invitation Key: <input type="text" name="invite">
+<br>
+Day: <input type="radio" name="devday" value="Day 1" /> Day 1<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="devday" value="Day 2" /> Day 2
+<br>
+Validity (in days): <input type="text" name="days">
+<br>
+Email ID of Guest: <input type="text" name="sendTo">
+<br><br><input type="submit" value="Send Invite">
+</form>
+{% endblock %}

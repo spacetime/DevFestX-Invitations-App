@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+Hello there! Please Fill the following details to request an invite to DevFestX. We would love to accommodate everyone but seats are limited.
+
+    <form action="/Request" method="post">
+        <div class="label">Email ID*</div><div class="inputs"><input type="text" name="emailid"></div><br />
+        <div class="label">Name</div><div class="inputs"><input type="text" name="name"></div><br />
+        <div class="label">Twitter handle</div><div class="inputs"><input type="text" name="twitter"></div><br />
+        <div class="label">Company/College</div><div class="inputs"><input type="text" name="company"></div><br />
+        <div class="label">Contact Number*</div><div class="inputs"><input type="text" name="contact_no"></div><br />
+        <div class="label">Focus Technology*</div><div class="inputs"><input type="text" name="tech"></div><br />
+        <div class="label">About You/Your Company</div><div class="inputs"><textarea name="about" rows="3" cols="60"></textarea></div><br />
+        <div class="label">Website/Blog</div><div class="inputs"><input type="text" name="website"></div>  <br />
+        <div class="label">All information except those marked with * will be displayed on your public profile. </div>
+      <div></div>
+      <div><input type="submit" value="Submit"></div>
+      <br />
+      <br />
+      <br />
+    </form>
+
+{% endblock %}
