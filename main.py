@@ -40,7 +40,7 @@ class invite(db.Model):
     
 
 def data_key(db_name=None):
-  """Constructs a datastore key for a Guestbook entity with guestbook_name."""
+  """Constructs a datastore key for invites or guests."""
   return db.Key.from_path('KeyStore', db_name or 'defaultDB')
 
 class Image(webapp.RequestHandler):
@@ -116,6 +116,7 @@ class Register(webapp.RequestHandler):
                 newguest.website2=self.request.get('website2')
                 avatar = self.request.get("img")
                 #avatar = images.resize(self.request.get("img"), 100, 100)
+                #uncomment to enable a resize
                 newguest.avatar = db.Blob(avatar)
                 
                 
@@ -210,114 +211,108 @@ class AddKey(webapp.RequestHandler):
         message.subject = "Invitation to DevFestX"
         expiryDate = (abhi+diff).strftime("%b %d %Y %I:%M %p")
         message.html = """
-        <html>
+       <html><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<head>
+<link type="text/css" href="http://www.devfestx.com/gtug/delhi/2012/invite/style.css"></link>
+</head>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: none;margin: 0;padding: 0;background-color: #363636;width: 100%% !important;">
+<div id="gdd"> </div>
+<table border="0" cellpadding="40" cellspacing="0" width="100%%" id="templateHeader" style="background:url(http://www.devfestx.com/gtug/delhi/2012/img/gdd.png);">
+<tr>
+<td align="center" valign="top" style="padding-bottom: 20px;border-collapse: collapse;">
+<table border="0" cellpadding="0" cellspacing="0" width="560">
+<tr>
+<td class="headerContent" style="border-collapse: collapse;color: #363636;font-family: Helvetica;font-size: 20px;font-weight: bold;line-height: 100%%;text-align: left;vertical-align: top;">
+    <div style="text-align: left;"><a href="http://gtug.devfestx.com/" style="color: #26ABE2;font-weight: normal;text-decoration: underline;"><img src="http://www.devfestx.com/gtug/delhi/2012/invite/images/DevFestX.png" alt="DevFestX , New Delhi 2012" border="0" style="margin: 0;padding: 0;max-width: 560px;border: 0;height: auto;line-height: 100%%;outline: none;text-decoration: none;" width="240" height="120" id="headerImage campaign-icon"></a></div>
+</td></tr>
+</table>
+</td>
 
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <head>
-
-            <link type="text/css" href="http://www.devfestx.com/gtug/delhi/2012/invite/style.css"></link>
-        </head>
-            <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: none;margin: 0;padding: 0;background-color: #363636;width: 100%% !important;">
-        	     <div id="gdd"> </div>
-
-                                <table border="0" cellpadding="40" cellspacing="0" width="100%%" id="templateHeader" style="background:url(http://www.devfestx.com/gtug/delhi/2012/img/gdd.png);">
-                                	<tr>
-
-                                    	<td align="center" valign="top" style="padding-bottom: 20px;border-collapse: collapse;">
-                                        	<table border="0" cellpadding="0" cellspacing="0" width="560">
-                                            	<tr>
-                                                    <td class="headerContent" style="border-collapse: collapse;color: #363636;font-family: Helvetica;font-size: 20px;font-weight: bold;line-height: 100%%;text-align: left;vertical-align: top;">
-                                                        <div style="text-align: left;"><a href="http://gtug.devfestx.com/" style="color: #26ABE2;font-weight: normal;text-decoration: underline;"><img src="http://www.devfestx.com/gtug/delhi/2012/invite/images/DevFestX.png" alt="DevFestX , New Delhi 2012" border="0" style="margin: 0;padding: 0;max-width: 560px;border: 0;height: auto;line-height: 100%%;outline: none;text-decoration: none;" width="240" height="120" id="headerImage campaign-icon"></a></div>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-
-                                    </tr>
-                                </table>
+</tr>
+</table>
 
 
 
-                                <table border="0" cellpadding="20" cellspacing="0" width="100%%" id="templateBody" style="background:url(http://www.devfestx.com/gtug/delhi/2012/img/gdd.png);">
-                                	<tr>
-                                    	<td align="center" valign="top" style="border-collapse: collapse;">
-                                        	<table border="0" cellpadding="0" cellspacing="0" width="560">
-                                            	<tr mc:repeatable="repeat_1" mc:repeatindex="0" mc:hideable="hideable_repeat_1_1" mchideable="hideable_repeat_1_1">
-                                                	<td align="center" colspan="2" style="padding-bottom: 40px;border-collapse: collapse;">
-                                                    	<table border="0" cellpadding="20" cellspacing="0" width="560" class="couponBlock" style="background-color: #ffffff;border: 1px dotted #303030;">
+<table border="0" cellpadding="20" cellspacing="0" width="100%%" id="templateBody" style="background:url(http://www.devfestx.com/gtug/delhi/2012/img/gdd.png);">
+<tr>
+<td align="center" valign="top" style="border-collapse: collapse;">
+<table border="0" cellpadding="0" cellspacing="0" width="560">
+<tr mc:repeatable="repeat_1" mc:repeatindex="0" mc:hideable="hideable_repeat_1_1" mchideable="hideable_repeat_1_1">
+<td align="center" colspan="2" style="padding-bottom: 40px;border-collapse: collapse;">
+	<table border="0" cellpadding="20" cellspacing="0" width="560" class="couponBlock" style="background-color: #ffffff;border: 1px dotted #303030;">
 
-                                                        	<tr>
-                                                            	<td width="200" style="border-collapse: collapse;">
-                                                                	<div style="text-align: left;"><img src="http://www.devfestx.com/gtug/delhi/2012/invite/images/you_re_i.jpg" alt="" border="0" style="margin: 0;padding: 0;max-width: 200px;border: 0;height: auto;line-height: 100%%;outline: none;text-decoration: none;" width="200px" height="117"></div>
-                                                                </td>
-                                                                <td align="left" valign="top" style="padding-left: 10px;border-collapse: collapse;">
-                                                                	<table border="0" cellpadding="0" cellspacing="0">
-                                                                    	<tr>
-                                                                        	<td colspan="2" valign="top" class="couponContent" style="border-collapse: collapse;color: #505050;font-family: Helvetica;font-size: 12px;line-height: 150%%;text-align: left;">Dear %s,<br>
+    	<tr>
+        	<td width="200" style="border-collapse: collapse;">
+            	<div style="text-align: left;"><img src="http://www.devfestx.com/gtug/delhi/2012/invite/images/you_re_i.jpg" alt="" border="0" style="margin: 0;padding: 0;max-width: 200px;border: 0;height: auto;line-height: 100%%;outline: none;text-decoration: none;" width="200px" height="117"></div>
+            </td>
+            <td align="left" valign="top" style="padding-left: 10px;border-collapse: collapse;">
+            	<table border="0" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<td colspan="2" valign="top" class="couponContent" style="border-collapse: collapse;color: #505050;font-family: Helvetica;font-size: 12px;line-height: 150%%;text-align: left;">Dear %s,<br>
 
-        <br>
-        You have been invited to <b>%s</b> of GTUG DevFestX , New Delhi 2012 . Your Invitation Code is : 
-        <h1 style="color: #26ABE2;display: block;font-family: Helvetica;font-size: 60px;font-weight: normal;letter-spacing: -4px;line-height: 100%%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;">
-        	<span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><strong><span style="font-size:48px;">%s</span></strong></span></h1>
-        <br>
-        </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                        	<td colspan="2" valign="top" class="couponContent" style="padding-top: 10px;border-collapse: collapse;color: #505050;font-family: Helvetica;font-size: 12px;line-height: 150%%;text-align: left;">To accept this invitation, click the following link,</td>
-                                                                        </tr>
+<br>
+You have been invited to <b>%s</b> of GTUG DevFestX , New Delhi 2012 . Your Invitation Code is : 
+<h1 style="color: #26ABE2;display: block;font-family: Helvetica;font-size: 60px;font-weight: normal;letter-spacing: -4px;line-height: 100%%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;">
+<span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><strong><span style="font-size:48px;">%s</span></strong></span></h1>
+<br>
+</td>
+                    </tr>
+                    <tr>
+                    	<td colspan="2" valign="top" class="couponContent" style="padding-top: 10px;border-collapse: collapse;color: #505050;font-family: Helvetica;font-size: 12px;line-height: 150%%;text-align: left;">To accept this invitation, click the following link,</td>
+                    </tr>
 
-                                                                        <tr>
-                                                                            <td valign="top" style="padding-top: 20px;border-collapse: collapse;">
-                                                                            	<div class="couponContent" style="color: #505050;font-family: Helvetica;font-size: 12px;line-height: 150%%;text-align: left;"><a href="http://devfestx.appspot.com/process?invite=%s">http://devfestx.appspot.com/process?invite=%s</a><br>
-        <br>
-        <br>
-         or copy and paste the code at devfestx.appspot.com: 
-        <div style="text-align: left">
-        	<span style="font-size:14px;"><br><br><strong>Please note that your invite expires on<br>
-        	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#ff0000;"> %s</span></strong></span><strong><span _fck_bookmark="1" style="display: none">&nbsp;</span><span style="font-size:14px;"><span style="color:#ff0000;">.</span><br>
+                    <tr>
+                        <td valign="top" style="padding-top: 20px;border-collapse: collapse;">
+                        	<div class="couponContent" style="color: #505050;font-family: Helvetica;font-size: 12px;line-height: 150%%;text-align: left;"><a href="http://devfestx.appspot.com/process?invite=%s">http://devfestx.appspot.com/process?invite=%s</a><br>
+<br>
+<br>
+or copy and paste the code at devfestx.appspot.com: 
+<div style="text-align: left">
+<span style="font-size:14px;"><br><br><strong>Please note that your invite expires on<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#ff0000;"> %s</span></strong></span><strong><span _fck_bookmark="1" style="display: none">&nbsp;</span><span style="font-size:14px;"><span style="color:#ff0000;">.</span><br>
 
-        	Please register before this date.</span><br>
-        	<br>
-        	For queries mail us at <a href="mailto:delhi.gtug@devfestx.com" style="color: #26ABE2;font-weight: normal;text-decoration: underline;">delhi.gtug@devfestx.com</a></strong></div>
-        <br>
-        </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
+Please register before this date.</span><br>
+<br>
+For queries mail us at <a href="mailto:delhi.gtug@devfestx.com" style="color: #26ABE2;font-weight: normal;text-decoration: underline;">delhi.gtug@devfestx.com</a></strong></div>
+<br>
+</div>
+                        </td>
+                    </tr>
+                </table>
 
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <img src="http://www.devfestx.com/gtug/delhi/2012/invite/images/scissors.png" align="left" height="16" width="25" style="display: block;border: 0;height: auto;line-height: 100%%;outline: none;text-decoration: none;">
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
+            </td>
+        </tr>
+    </table>
+    <img src="http://www.devfestx.com/gtug/delhi/2012/invite/images/scissors.png" align="left" height="16" width="25" style="display: block;border: 0;height: auto;line-height: 100%%;outline: none;text-decoration: none;">
+</td>
+</tr>
+</table>
+</td>
+</tr>
 
-                                </table>
+</table>
 
 
 
-                                <table border="0" cellpadding="20" cellspacing="0" width="100%%" id="templateFooter" style="border-top: 0;">
-                                	<tr>
-                                    	<td align="center" valign="top" style="border-collapse: collapse;">
-                                        	<table border="0" cellpadding="0" cellspacing="0" width="560">
-                                            	<tr>
-                                                    <td valign="top" class="footerContent" style="padding-right: 20px;border-collapse: collapse;color: #909090;font-family: Helvetica;font-size: 11px;line-height: 125%%;text-align: left;">Copyright &copy; 2012 GTUG DevFestX, All rights reserved.<br>
-        <br>
-        <br>
-        Powered by Google App Engine + Python. Built by <a href="http://rishab.in" style="color:#FFF">Rishab Arora</a> (<a href="https://twitter.com/#!/spacetime29" style="color:#FFF">@spacetime29</a>)
-        <br><br>Our email address is:<br>
-        delhi.gtug@devfestx.com&nbsp;<br>
-        Template by mailchimp.com</td>
-                                                </tr>
-                                            </table>               
-                            </td>
-                        </tr>
-                    </table>
-                </center>
-            </body>
+<table border="0" cellpadding="20" cellspacing="0" width="100%%" id="templateFooter" style="border-top: 0;">
+<tr>
+<td align="center" valign="top" style="border-collapse: collapse;">
+<table border="0" cellpadding="0" cellspacing="0" width="560">
+<tr>
+<td valign="top" class="footerContent" style="padding-right: 20px;border-collapse: collapse;color: #909090;font-family: Helvetica;font-size: 11px;line-height: 125%%;text-align: left;">Copyright &copy; 2012 GTUG DevFestX, All rights reserved.<br>
+<br>
+<br>
+Powered by Google App Engine + Python. Built by <a href="http://rishab.in" style="color:#FFF">Rishab Arora</a> (<a href="https://twitter.com/#!/spacetime29" style="color:#FFF">@spacetime29</a>)
+<br><br>Our email address is:<br>
+delhi.gtug@devfestx.com&nbsp;<br>
+Template by mailchimp.com</td>
+</tr>
+</table>               
+</td>
+</tr>
+</table>
+</center>
+</body>
 
         </html>
         """ % (invitee,newinvite.devday,invite_key,invite_key,invite_key,expiryDate) 
@@ -410,6 +405,7 @@ class ListGuestsCSV(webapp.RequestHandler):
 
 class ListGuests(webapp.RequestHandler):
     def get(self):
+        #comment next 3 lines to build a public page which lists everyone arriving. Remove their email addresses though.
         if not users.is_current_user_admin():
             self.redirect('/admin')
             return
@@ -458,35 +454,36 @@ class RClosed(webapp.RequestHandler):
         self.response.out.write(template.render(path, template_values))   
         
          
-#application = webapp.WSGIApplication([
-#  ('/', MainPage),
-#  ('/sign', Register),
-#  ('/admin', AdminConsole),
-#  ('/adminnomail', AdminConsoleNoMail),
-#  ('/process',ProcessInvite),
-#  ('/addkey',AddKey),
-#  ('/nomail',AddKeyNoMail),
-#  ('/Register',Register),
-#  ('/listkeys',ListKeys),
-#  ('/listguests',ListGuests),
-#  ('/listguestscsv',ListGuestsCSV),
-#  ('/img', Image)
-#], debug=False)
-
 application = webapp.WSGIApplication([
-  ('/', RClosed),
-  ('/sign', RClosed),
+  ('/', MainPage),
+  ('/sign', Register),
   ('/admin', AdminConsole),
   ('/adminnomail', AdminConsoleNoMail),
-  ('/process',RClosed),
+  ('/process',ProcessInvite),
   ('/addkey',AddKey),
   ('/nomail',AddKeyNoMail),
-  ('/Register',RClosed),
+  ('/Register',Register),
   ('/listkeys',ListKeys),
   ('/listguests',ListGuests),
   ('/listguestscsv',ListGuestsCSV),
   ('/img', Image)
 ], debug=True)
+
+#comment above and uncomment this to shutdown the application for new entries
+#application = webapp.WSGIApplication([
+#  ('/', RClosed),
+#  ('/sign', RClosed),
+#  ('/admin', AdminConsole),
+#  ('/adminnomail', AdminConsoleNoMail),
+#  ('/process',RClosed),
+# ('/addkey',AddKey),
+#  ('/nomail',AddKeyNoMail),
+#  ('/Register',RClosed),
+#  ('/listkeys',ListKeys),
+# ('/listguests',ListGuests),
+# ('/listguestscsv',ListGuestsCSV),
+#  ('/img', Image)
+#], debug=False)
 
 
 def main():

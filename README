@@ -1,0 +1,51 @@
+The app was the result of a 9 hour code sprint and is, therefore, very ugly.
+However, if you ignore the HTML Template, the code is pretty straight forward.
+You may also find remnants of the GAE guestbook example inside the code as I used it as boilerplate.
+
+
+//INTRODUCTION
+This app lets you add 'keys' for a private event. All those people who receive said keys (for day1 or day2) which are sent by the app itself (free quota is 100 mails per day) will be able to fill details and register.
+Admins get access to a page with profiles of all registered members.
+They also get a spreadsheet for a more convenient listing.
+
+
+//HOW TO RUN
+1. Change App Name and version according to your needs.
+2. Register that app on AppEngine.
+3. Deploy.
+4. Suggestion: Change the Email HTML and Text version according to you.
+
+
+//SOME OF THE THINGS THAT I KNOW ARE WRONG
+1. The admin console. The suggested way is here: http://code.google.com/appengine/docs/python/config/appconfig.html#Requiring_Login_or_Administrator_Status
+
+2. The HTML Template for the email is too complex
+
+3. After login by admin you always get redirected to the same page. Point 1 should fix this too.
+
+4. /listguestscsv doesn't actually generate a CSV file. You need to copy paste the stuff into a notepad document.
+
+5. Basically the whole app is running on duct tape
+
+6. I did not intentionally crop the uploaded pics.
+
+//LICENSE
+    Copyright (C) 2012  Rishab Arora
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+Rishab Arora (spacetime29)
+ra.rishab@gmail.com
+me@rishab.in
